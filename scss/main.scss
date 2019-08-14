@@ -1,3 +1,7 @@
+$backgroundColor: #FFFFFF;
+$cardPadding: 24px;
+$cardImageSize: 160px;
+
 * {
 	margin: 0;
 	padding: 0;
@@ -5,13 +9,58 @@
 	font-family: 'Roboto', sans-serif;
 }
 
+body {
+	background-color: $backgroundColor;
+}
+
 #container {
 	width: 80%;
 	margin: 24px auto 0 auto;
-		.card {
-			border-radius: 8px;
-			border: 1px solid rgba(0,0,0,0.12);
-			padding: 24px;
-			margin: 12px;
+	.card {
+		position: relative;
+		border-radius: 8px;
+		border: 1px solid rgba(0,0,0,0.12);
+		padding: $cardPadding;
+		margin: 12px;
+		.cardText {
+			h3 {
+				margin-bottom: 1.5rem;
+			}
+			h3, p {
+				width: calc(100% - (#{$cardImageSize} + #{$cardPadding}));
+			}
 		}
+		.cardImg {
+			position: absolute;
+			right: 0;
+			top: 0;
+			margin: 12px;
+			border-radius: 6px;
+			height: $cardImageSize;
+			width: $cardImageSize;
+			background-position: center;
+			background-repeat: no-repeat;
+			background-size: cover;
+		}
+	}
+}
+
+@media screen and (max-width: 600px) {
+	#container {
+		width: 100%;
+		padding: 0 12px;
+	}
+	.cardText {
+		h3 {
+			width: calc(100% - ((#{$cardImageSize} - 40px) + #{$cardPadding})) !important;
+			margin-bottom: 0.8rem !important;
+		}
+		p {
+			width: 100% !important;
+		}
+	}
+	.cardImg {
+		height: $cardImageSize - 40px !important;
+		width: $cardImageSize - 40px !important;
+	}
 }
