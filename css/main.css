@@ -39,9 +39,11 @@ body {
 
   .cardText h3 {
     width: calc(100% - ((160px - 40px) + 24px)) !important;
-    margin-bottom: 0.8rem !important; }
+    margin-bottom: 0.8rem !important;
+    font-size: 1.2em; }
   .cardText p {
-    width: 100% !important; }
+    width: 100% !important;
+    font-size: 0.8em; }
 
   .cardImg {
     height: 120px !important;

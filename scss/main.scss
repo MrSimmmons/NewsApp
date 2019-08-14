@@ -54,9 +54,11 @@ body {
 		h3 {
 			width: calc(100% - ((#{$cardImageSize} - 40px) + #{$cardPadding})) !important;
 			margin-bottom: 0.8rem !important;
+			font-size: 1.2em
 		}
 		p {
 			width: 100% !important;
+			font-size: 0.8em;
 		}
 	}
 	.cardImg {

@@ -40,6 +40,6 @@ $.ajax({
     },
     success: (data) => {
         key = data.newsApiKey;
-        // runSearch();
+        runSearch();
     }
 });
