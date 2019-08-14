@@ -47,13 +47,13 @@ body {
 
   .cardImg {
     height: 120px !important;
-    width: 120px !important; } }
+    width: 120px !important; }
 
-.searchForm {
-  justify-content: space-between; }
-  .searchForm input {
-    width: 77% !important; }
-  .searchForm button {
-    width: 21% !important; }
+  .searchForm {
+    justify-content: space-between; }
+    .searchForm input {
+      width: 77% !important; }
+    .searchForm button {
+      width: 21% !important; } }
 
 /*# sourceMappingURL=main.css.map */
