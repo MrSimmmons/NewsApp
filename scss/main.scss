@@ -1,3 +1,7 @@
+$backgroundColor: #FFFFFF;
+$cardPadding: 24px;
+$cardImageSize: 160px;
+
 * {
 	margin: 0;
 	padding: 0;
@@ -5,23 +9,71 @@
 	font-family: 'Roboto', sans-serif;
 }
 
+body {
+	background-color: $backgroundColor;
+}
+
 #container {
 	width: 80%;
 	margin: 24px auto 0 auto;
 	.card {
+		position: relative;
 		border-radius: 8px;
 		border: 1px solid rgba(0,0,0,0.12);
-		padding: 24px;
+		padding: $cardPadding;
 		margin: 12px;
+		.cardText {
+			h3 {
+				margin-bottom: 1.5rem;
+			}
+			h3, p {
+				width: calc(100% - (#{$cardImageSize} + #{$cardPadding}));
+			}
+		}
+		.cardImg {
+			position: absolute;
+			right: 0;
+			top: 0;
+			margin: 12px;
+			border-radius: 6px;
+			height: $cardImageSize;
+			width: $cardImageSize;
+			background-position: center;
+			background-repeat: no-repeat;
+			background-size: cover;
+		}
 	}
 }
 
-.searchForm {
-	justify-content: space-between;
-	input {
-		width: 77% !important;
+
+@media screen and (max-width: 600px) {
+	#container {
+		width: 100%;
+		padding: 0 12px;
 	}
-	button{
-		width: 21% !important;
+	.cardText {
+		h3 {
+			width: calc(100% - ((#{$cardImageSize} - 40px) + #{$cardPadding})) !important;
+			margin-bottom: 0.8rem !important;
+			font-size: 1.2em
+		}
+		p {
+			width: 100% !important;
+			font-size: 0.8em;
+		}
+	}
+	.cardImg {
+		height: $cardImageSize - 40px !important;
+		width: $cardImageSize - 40px !important;
+	}
+
+	.searchForm {
+		justify-content: space-between;
+		input {
+			width: 77% !important;
+		}
+		button{
+			width: 21% !important;
+		}
 	}
 }
