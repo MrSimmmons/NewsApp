@@ -71,6 +71,14 @@ body {
 	}
 }
 
+.jumbotron {
+	margin-bottom: 0;
+}
+
+.powered {
+	text-align: center;
+	margin: 1.2em 0;
+}
 
 @media screen and (max-width: 900px) {
 	#carousel {
