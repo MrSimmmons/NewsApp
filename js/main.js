@@ -26,21 +26,9 @@ function runSearch (fields = '') {
         success: (newsData) => {
             container.empty();
             carouselInner.empty();
-            for (var i = 0; i < newsData.articles.length; i++) {
-                if (i < 4) {
-                    let active = '';
-                    if (i == 0) {
-                        active = 'active';
-                    }
-
-                    let image = '';
-
-                    if (newsData.articles[i].urlToImage != null) {
-                        image = `<img src="${newsData.articles[i].urlToImage}" class="card-img-top" alt="${newsData.articles[i].description}">`;
-                    }
-
-                    carouselInner.append(`<div class="carousel-item ${active}"><div class="card">${image}<div class="card-body"><h5 class="card-title">${newsData.articles[i].title}</h5><p class="card-text">${newsData.articles[i].description}</p><a class="btn btn-primary" href="${newsData.articles[i].url}" target="_blank">Read More at ${newsData.articles[i].source.name}</a></div></div></div>`);
-                } else {
+            if (newsData.articles.length < 5) {
+                $('#carousel').hide();
+                for (var i = 0; i < newsData.articles.length; i++) {
                     let image = '';
 
                     if (newsData.articles[i].urlToImage != null) {
@@ -48,6 +36,32 @@ function runSearch (fields = '') {
                     }
 
                     container.append(`<div class='card'>${image}<div class="cardText"><h3>${newsData.articles[i].title}</h3><p>${newsData.articles[i].description}</p><a class="btn btn-primary" href="${newsData.articles[i].url}" target="_blank">Read More at ${newsData.articles[i].source.name}</a></div></div>`);
+                }
+            } else {
+                $('#carousel').show();
+                for (var i = 0; i < newsData.articles.length; i++) {
+                    if (i < 4) {
+                        let active = '';
+                        if (i == 0) {
+                            active = 'active';
+                        }
+
+                        let image = '';
+
+                        if (newsData.articles[i].urlToImage != null) {
+                            image = `<img src="${newsData.articles[i].urlToImage}" class="card-img-top" alt="${newsData.articles[i].description}">`;
+                        }
+
+                        carouselInner.append(`<div class="carousel-item ${active}"><div class="card">${image}<div class="card-body"><h5 class="card-title">${newsData.articles[i].title}</h5><p class="card-text">${newsData.articles[i].description}</p><a class="btn btn-primary" href="${newsData.articles[i].url}" target="_blank">Read More at ${newsData.articles[i].source.name}</a></div></div></div>`);
+                    } else {
+                        let image = '';
+
+                        if (newsData.articles[i].urlToImage != null) {
+                            image = `<div class="cardImg" style="background-image: url('${newsData.articles[i].urlToImage}')"></div>`;
+                        }
+
+                        container.append(`<div class='card'>${image}<div class="cardText"><h3>${newsData.articles[i].title}</h3><p>${newsData.articles[i].description}</p><a class="btn btn-primary" href="${newsData.articles[i].url}" target="_blank">Read More at ${newsData.articles[i].source.name}</a></div></div>`);
+                    }
                 }
             }
             [].forEach.call(document.querySelectorAll('h3'), (e)=> {
@@ -72,13 +86,17 @@ $.ajax({
     }
 });
 
-$('.nav-link').click(()=> {
+$('#aboutBtn').click(()=> {
+    $('#aboutBtn').parent().siblings('.active').removeClass('active');
+    $('#aboutBtn').parent().addClass('active');
   container.hide();
   $('#carousel').hide();
   $('#about').show();
 });
 
-$('#home').click(()=> {
+$('#homeBtn').click(()=> {
+    $('#homeBtn').parent().siblings('.active').removeClass('active');
+    $('#homeBtn').parent().addClass('active');
   container.show();
   $('#carousel').show();
   $('#about').hide();
