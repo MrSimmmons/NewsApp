@@ -50,6 +50,11 @@ function runSearch (fields = '') {
                     container.append(`<div class='card'>${image}<div class="cardText"><h3>${newsData.articles[i].title}</h3><p>${newsData.articles[i].description}</p><a class="btn btn-primary" href="${newsData.articles[i].url}" target="_blank">Read More at ${newsData.articles[i].source.name}</a></div></div>`);
                 }
             }
+            [].forEach.call(document.querySelectorAll('h3'), (e)=> {
+                if (e.parentNode.parentNode.children[0].className == 'cardText') {
+                    e.parentNode.parentNode.children[0].children[0].style = 'width: 100% !important';
+                }
+            });
         }
     });
 }
@@ -67,7 +72,7 @@ $.ajax({
     }
 });
 
-$('#about').click(()=> {
+$('.nav-link').click(()=> {
   container.hide();
   $('#carousel').hide();
   $('#about').show();
