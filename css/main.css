@@ -32,6 +32,9 @@ body {
       background-repeat: no-repeat;
       background-size: cover; }
 
+#about {
+  display: none; }
+
 @media screen and (max-width: 600px) {
   #container {
     width: 100%;

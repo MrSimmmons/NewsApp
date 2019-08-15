@@ -43,3 +43,17 @@ $.ajax({
         runSearch();
     }
 });
+
+
+$('#about').click() => {
+  container.hide();
+  $('#carousel').hide();
+  $('#about').show();
+});
+
+
+$('#home').click() => {
+  container.show();
+  $('#carousel').show();
+  $('#about').hide();
+})
