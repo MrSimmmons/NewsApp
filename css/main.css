@@ -7,6 +7,9 @@
 body {
   background-color: #FFFFFF; }
 
+#about {
+  display: none; }
+
 #carousel {
   width: 60%;
   margin: 0 auto;
