@@ -1,3 +1,4 @@
+
 $backgroundColor: #FFFFFF;
 $cardPadding: 24px;
 $cardImageSize: 160px;
@@ -11,6 +12,17 @@ $cardImageSize: 160px;
 
 body {
 	background-color: $backgroundColor;
+}
+
+#carouselInner {
+	.card {
+		border: 0;
+		border-bottom: 1px solid rgba(0,0,0,0.125);
+		border-radius: 0px !important;
+		.card-img-top {
+			border-radius: 0px !important;
+		}
+	}
 }
 
 #container {
@@ -45,9 +57,6 @@ body {
 	}
 }
 
-#about {
-	display: none;
-}
 
 @media screen and (max-width: 600px) {
 	#container {

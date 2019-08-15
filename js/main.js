@@ -1,6 +1,7 @@
 const container = $('#container');
 const searchBox = $('#seachInput');
 const searchSubmit = $('#searchBtn');
+const carouselInner = $('#carouselInner');
 
 let key;
 
@@ -24,8 +25,30 @@ function runSearch (fields = '') {
         },
         success: (newsData) => {
             container.empty();
+            carouselInner.empty();
             for (var i = 0; i < newsData.articles.length; i++) {
-                container.append(`<div class='card'><div class="cardImg" style="background-image: url('${newsData.articles[i].urlToImage}')"></div><div class="cardText"><h3>${newsData.articles[i].title}</h3><p>${newsData.articles[i].description}</p><a class="btn btn-primary" href="${newsData.articles[i].url}" target="_blank">Read More at ${newsData.articles[i].source.name}</a></div></div>`);
+                if (i < 4) {
+                    let active = '';
+                    if (i == 0) {
+                        active = 'active';
+                    }
+
+                    let image = '';
+
+                    if (newsData.articles[i].urlToImage != null) {
+                        image = `<img src="${newsData.articles[i].urlToImage}" class="card-img-top" alt="${newsData.articles[i].description}">`;
+                    }
+
+                    carouselInner.append(`<div class="carousel-item ${active}"><div class="card">${image}<div class="card-body"><h5 class="card-title">${newsData.articles[i].title}</h5><p class="card-text">${newsData.articles[i].description}</p><a class="btn btn-primary" href="${newsData.articles[i].url}" target="_blank">Read More at ${newsData.articles[i].source.name}</a></div></div></div>`);
+                } else {
+                    let image = '';
+
+                    if (newsData.articles[i].urlToImage != null) {
+                        image = `<div class="cardImg" style="background-image: url('${newsData.articles[i].urlToImage}')"></div>`;
+                    }
+
+                    container.append(`<div class='card'>${image}<div class="cardText"><h3>${newsData.articles[i].title}</h3><p>${newsData.articles[i].description}</p><a class="btn btn-primary" href="${newsData.articles[i].url}" target="_blank">Read More at ${newsData.articles[i].source.name}</a></div></div>`);
+                }
             }
         }
     });
@@ -44,16 +67,14 @@ $.ajax({
     }
 });
 
-
-$('#about').click() => {
+$('#about').click(()=> {
   container.hide();
   $('#carousel').hide();
   $('#about').show();
 });
 
-
-$('#home').click() => {
+$('#home').click(()=> {
   container.show();
   $('#carousel').show();
   $('#about').hide();
-})
+});

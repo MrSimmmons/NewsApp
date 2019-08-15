@@ -7,6 +7,13 @@
 body {
   background-color: #FFFFFF; }
 
+#carouselInner .card {
+  border: 0;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.125);
+  border-radius: 0px !important; }
+  #carouselInner .card .card-img-top {
+    border-radius: 0px !important; }
+
 #container {
   width: 80%;
   margin: 24px auto 0 auto; }
@@ -31,9 +38,6 @@ body {
       background-position: center;
       background-repeat: no-repeat;
       background-size: cover; }
-
-#about {
-  display: none; }
 
 @media screen and (max-width: 600px) {
   #container {
