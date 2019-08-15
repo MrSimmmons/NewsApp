@@ -7,6 +7,13 @@
 body {
   background-color: #FFFFFF; }
 
+#carouselInner .card {
+  border: 0;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.125);
+  border-radius: 0px !important; }
+  #carouselInner .card .card-img-top {
+    border-radius: 0px !important; }
+
 #container {
   width: 80%;
   margin: 24px auto 0 auto; }
@@ -15,7 +22,8 @@ body {
     border-radius: 8px;
     border: 1px solid rgba(0, 0, 0, 0.12);
     padding: 24px;
-    margin: 12px; }
+    margin: 12px;
+    width: 100%; }
     #container .card .cardText h3 {
       margin-bottom: 1.5rem; }
     #container .card .cardText h3, #container .card .cardText p {
